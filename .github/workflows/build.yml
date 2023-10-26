@@ -1,0 +1,58 @@
+name: Kaizen VPN
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        with:
+          submodules: 'recursive'
+
+      - name: Set up Java
+        uses: actions/setup-java@v2
+        with:
+          java-version: 11
+          distribution: 'adopt'
+      - name: Set up Flutter
+        run: |
+          sudo apt install snapd
+          sudo systemctl enable snapd
+          sudo systemctl start snapd
+          sudo snap install flutter --classic
+
+        working-directory: ${{ github.workspace }}
+        env:
+          FLUTTER_HOME: ${{ github.workspace }}/flutter
+
+      - name: Build APK
+        run: |
+          cd ${{ github.workspace }}/
+          flutter clean
+          flutter pub get
+          flutter doctor -v
+          flutter doctor
+          rm pubspec.lock
+          flutter channel beta
+          flutter upgrade
+          flutter analyze
+          flutter pub upgrade
+          flutter build apk --release --verbose
+
+        working-directory: ${{ github.workspace }}
+
+
+      - name: Upload APK
+        uses: actions/upload-artifact@v2
+        with:
+          name: app-debug
+          path: build/app/outputs/flutter-apk/app-debug.apk
