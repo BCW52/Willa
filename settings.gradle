@@ -1,1 +1,3 @@
 include ':app'
+include ':vpnLib'
+rootProject.name = "Chiku VPN"

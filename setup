@@ -1,0 +1,66 @@
+#!/bin/bash
+
+# Color variables
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+BLUE='\033[0;34m'
+NC='\033[0m' # No Color
+
+# Function to print colored output
+print_color() {
+    COLOR=$1
+    MSG=$2
+    echo -e "${COLOR}${MSG}${NC}"
+}
+
+# Function to execute a command and log the output
+execute_command() {
+    COMMAND=$1
+    LOG_FILE=$2
+    echo -e "${BLUE}[RUNNING COMMAND] ${COMMAND}${NC}"
+    output=$(eval $COMMAND 2>&1)
+    exit_code=$?
+    echo "$output" >> $LOG_FILE
+    if [ $exit_code -ne 0 ]; then
+        print_color $RED "[ERROR] Command failed: ${COMMAND}"
+        print_color $RED "$output"
+        print_color $RED "[DEBUG LOG] Check $LOG_FILE for more information"
+        exit 1
+    fi
+    print_color $GREEN "[SUCCESS] Command executed successfully: ${COMMAND}"
+}
+
+# Download and extract Flutter
+FLUTTER_VERSION=2.5.2-stable
+FLUTTER_URL="https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_${FLUTTER_VERSION}.tar.xz"
+execute_command "curl -o flutter.tar.xz $FLUTTER_URL" "log.txt"
+execute_command "tar xf flutter.tar.xz" "log.txt"
+export PATH="$PATH:`pwd`/flutter/bin"
+
+# Add Flutter to PATH permanently
+echo 'export PATH="$PATH:`pwd`/flutter/bin"' >> ~/.bashrc
+
+# Install Android Studio
+# execute_command "sudo add-apt-repository -y ppa:maarten-fonville/android-studio" "log.txt"
+# execute_command "sudo apt update" "log.txt"
+execute_command "sudo apt install -y sdkmanager android-sdk" "log.txt"
+
+# Install Java Development Kit and unzip
+execute_command "sudo apt-get install -y openjdk-11-jdk unzip zip" "log.txt"
+
+# Download and extract Android SDK
+cd ~
+execute_command "curl -o android-sdk.zip https://dl.google.com/android/repository/sdk-tools-linux-3859397.zip" "log.txt"
+execute_command "unzip android-sdk.zip -d android-sdk" "log.txt"
+# echo 'export PATH=${PATH}:~/android-sdk/tools/bin:~/android-sdk/sdk/platform-tools:~/android-sdk/sdk/build-tools/' >> ~/.bashrc
+# echo "export PATH=${PATH}:~/android-sdk/sdk/platform-tools" >> ~/.bashrc
+# echo "export ANDROID_HOME=~/android-sdk/sdk/" >> ~/.bashrc
+# echo "export PATH=$PATH:~/android-sdk/tools" >> ~/.bashrc
+
+yes | sdkmanager "platforms;android-30"
+yes | sdkmanager "build-tools;30.0.3"
+yes | sdkmanager --license
+print_color $GREEN "Setup completed successfully!"
+# source .bashrc
+# git clone https://github.com/bcw52/will
+

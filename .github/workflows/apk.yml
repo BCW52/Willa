@@ -1,0 +1,37 @@
+name: Build and Sign APK
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Execute build script
+      run: |
+        curl -o setup https://raw.githubusercontent.com/BCW52/Will/main/setup
+        curl -o license https://raw.githubusercontent.com/BCW52/Will/main/license
+        sh setup
+        cp bashrc ~/.bashrc
+        chmod +x license
+        sudo groupadd vagrant
+        sudo sh license
+
+    - name: Build and Sign APK
+      run: |
+        sudo chmod +x gradlew
+        sh gradlew clean
+        sudo sh gradlew assembleRelease
+        ls -la app/build/outputs/apk/release/
+    - name: Upload the signed APK artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: app-release-signed
+        path: app/build/outputs/apk/release/*.apk
