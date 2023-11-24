@@ -1,4 +1,4 @@
-package com.example.chikuvpn.adapter;
+package com.kaizenvpn.vpn.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -12,9 +12,9 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.example.chikuvpn.R;
-import com.example.chikuvpn.interfaces.NavItemClickListener;
-import com.example.chikuvpn.model.Server;
+import com.kaizenvpn.vpn.R;
+import com.kaizenvpn.vpn.interfaces.NavItemClickListener;
+import com.kaizenvpn.vpn.model.Server;
 
 import java.util.ArrayList;
 

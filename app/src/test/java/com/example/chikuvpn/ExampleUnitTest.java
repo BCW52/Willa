@@ -1,4 +1,4 @@
-package com.example.chikuvpn;
+package com.kaizenvpn.vpn;
 
 import org.junit.Test;
 

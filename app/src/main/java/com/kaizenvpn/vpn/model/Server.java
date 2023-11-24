@@ -1,4 +1,4 @@
-package com.example.chikuvpn.model;
+package com.kaizenvpn.vpn.model;
 
 public class Server {
     private String country;

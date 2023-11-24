@@ -1,15 +1,15 @@
-package com.example.chikuvpn;
+package com.kaizenvpn.vpn;
 
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import com.example.chikuvpn.model.Server;
+import com.kaizenvpn.vpn.model.Server;
 
-import static com.example.chikuvpn.Utils.getImgURL;
+import static com.kaizenvpn.vpn.Utils.getImgURL;
 
 public class SharedPreference {
 
-    private static final String APP_PREFS_NAME = "ChikuVPNPreference";
+    private static final String APP_PREFS_NAME = "VPNPreference";
 
     private SharedPreferences mPreference;
     private SharedPreferences.Editor mPrefEditor;
@@ -48,7 +48,7 @@ public class SharedPreference {
 
         Server server = new Server(
                 mPreference.getString(SERVER_COUNTRY,"France"),
-                mPreference.getString(SERVER_FLAG,getImgURL(R.drawable.japan)),
+                mPreference.getString(SERVER_FLAG,getImgURL(R.drawable.fr_flag)),
                 mPreference.getString(SERVER_OVPN,"tcp.ovpn"),
                 mPreference.getString(SERVER_OVPN_USER,"vpnbook"),
                 mPreference.getString(SERVER_OVPN_PASSWORD,"b7dh4n3")

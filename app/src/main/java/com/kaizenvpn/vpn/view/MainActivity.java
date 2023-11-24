@@ -1,4 +1,4 @@
-package com.example.chikuvpn.view;
+package com.kaizenvpn.vpn.view;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -20,11 +20,11 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.chikuvpn.R;
-import com.example.chikuvpn.adapter.ServerListRVAdapter;
-import com.example.chikuvpn.interfaces.ChangeServer;
-import com.example.chikuvpn.interfaces.NavItemClickListener;
-import com.example.chikuvpn.model.Server;
+import com.kaizenvpn.vpn.R;
+import com.kaizenvpn.vpn.adapter.ServerListRVAdapter;
+import com.kaizenvpn.vpn.interfaces.ChangeServer;
+import com.kaizenvpn.vpn.interfaces.NavItemClickListener;
+import com.kaizenvpn.vpn.model.Server;
 
 import java.util.ArrayList;
 
@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity implements NavItemClickListe
     private DrawerLayout drawer;
     private ChangeServer changeServer;
 
-    public static final String TAG = "ChikuVPN";
+    public static final String TAG = "KaizenVPN";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -114,7 +114,7 @@ public class MainActivity extends AppCompatActivity implements NavItemClickListe
         ArrayList<Server> servers = new ArrayList<>();
 
         servers.add(new Server("France",
-                com.example.chikuvpn.Utils.getImgURL(R.drawable.usa_flag),
+                com.kaizenvpn.vpn.Utils.getImgURL(R.drawable.usa_flag),
                 "tcp.ovpn"
         ));
         return servers;
@@ -152,7 +152,7 @@ public class MainActivity extends AppCompatActivity implements NavItemClickListe
 
                 Intent sharingIntent = new Intent(Intent.ACTION_SEND);
                 sharingIntent.setType("text/plain");
-                sharingIntent.putExtra(Intent.EXTRA_TEXT, "Hey Download this VPN App *" + getString(R.string.app_name) + "* App : https://play.google.com/store/apps/details?id=" + getPackageName());
+                sharingIntent.putExtra(Intent.EXTRA_TEXT, "KaizenVPN" + getString(R.string.app_name) + "* Save Your Day : https://kaizenvpn.com" + getPackageName());
                 sharingIntent.putExtra(Intent.EXTRA_SUBJECT, "Subject");
                 startActivity(Intent.createChooser(sharingIntent, "Share using"));
 
@@ -160,7 +160,7 @@ public class MainActivity extends AppCompatActivity implements NavItemClickListe
 
             case R.id.about:
 
-                Toast.makeText(this, "Created by Codig overload", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Created by DevRahman", Toast.LENGTH_SHORT).show();
 
                 break;
 

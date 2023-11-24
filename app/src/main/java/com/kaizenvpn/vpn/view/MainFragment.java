@@ -1,4 +1,4 @@
-package com.example.chikuvpn.view;
+package com.kaizenvpn.vpn.view;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -26,12 +26,12 @@ import androidx.fragment.app.Fragment;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
 import com.bumptech.glide.Glide;
-import com.example.chikuvpn.CheckInternetConnection;
-import com.example.chikuvpn.R;
-import com.example.chikuvpn.SharedPreference;
-import com.example.chikuvpn.databinding.FragmentMainBinding;
-import com.example.chikuvpn.interfaces.ChangeServer;
-import com.example.chikuvpn.model.Server;
+import com.kaizenvpn.vpn.CheckInternetConnection;
+import com.kaizenvpn.vpn.R;
+import com.kaizenvpn.vpn.SharedPreference;
+import com.kaizenvpn.vpn.databinding.FragmentMainBinding;
+import com.kaizenvpn.vpn.interfaces.ChangeServer;
+import com.kaizenvpn.vpn.model.Server;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdSize;
 import com.google.android.gms.ads.AdView;

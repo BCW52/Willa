@@ -1,4 +1,4 @@
-package com.example.chikuvpn;
+package com.kaizenvpn.vpn;
 
 import android.content.Context;
 
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
     public void useAppContext() {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
-        assertEquals("com.chikuai.chikuvpn", appContext.getPackageName());
+        assertEquals("com.kaizenvpn.vpn", appContext.getPackageName());
     }
 }
