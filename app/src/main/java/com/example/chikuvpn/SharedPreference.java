@@ -53,13 +53,6 @@ public class SharedPreference {
                 mPreference.getString(SERVER_OVPN_USER,"vpnbook"),
                 mPreference.getString(SERVER_OVPN_PASSWORD,"b7dh4n3")
         );
-Server server = new Server(
-                mPreference.getString(SERVER_COUNTRY,"France 2"),
-                mPreference.getString(SERVER_FLAG,getImgURL(R.drawable.japan)),
-                mPreference.getString(SERVER_OVPN,"udp.ovpn"),
-                mPreference.getString(SERVER_OVPN_USER,"vpnbook"),
-                mPreference.getString(SERVER_OVPN_PASSWORD,"b7dh4n3")
-        );
         return server;
     }
 }
