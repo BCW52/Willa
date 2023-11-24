@@ -115,11 +115,11 @@ public class MainActivity extends AppCompatActivity implements NavItemClickListe
 
         servers.add(new Server("France",
                 com.example.chikuvpn.Utils.getImgURL(R.drawable.usa_flag),
-                "udp.ovpn"
+                "tcp.ovpn"
         ));
         servers.add(new Server("France 2",
                 com.example.chikuvpn.Utils.getImgURL(R.drawable.japan),
-                "tcp.ovpn"
+                "udp.ovpn"
         ));
 
         return servers;
