@@ -51,7 +51,7 @@ public class SharedPreference {
                 mPreference.getString(SERVER_FLAG,getImgURL(R.drawable.fr_flag)),
                 mPreference.getString(SERVER_OVPN,"tcp.ovpn"),
                 mPreference.getString(SERVER_OVPN_USER,"vpnbook"),
-                mPreference.getString(SERVER_OVPN_PASSWORD,"b7dh4n3")
+                mPreference.getString(SERVER_OVPN_PASSWORD,"s4m5axb")
         );
         return server;
     }

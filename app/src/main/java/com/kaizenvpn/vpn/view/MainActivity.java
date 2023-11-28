@@ -152,7 +152,7 @@ public class MainActivity extends AppCompatActivity implements NavItemClickListe
 
                 Intent sharingIntent = new Intent(Intent.ACTION_SEND);
                 sharingIntent.setType("text/plain");
-                sharingIntent.putExtra(Intent.EXTRA_TEXT, "KaizenVPN" + getString(R.string.app_name) + "* Save Your Day : https://kaizenvpn.com" + getPackageName());
+                sharingIntent.putExtra(Intent.EXTRA_TEXT, "KaizenVPN" + getString(R.string.app_name) + "* Save Your Day : https://kaizenvpn.com");
                 sharingIntent.putExtra(Intent.EXTRA_SUBJECT, "Subject");
                 startActivity(Intent.createChooser(sharingIntent, "Share using"));
 

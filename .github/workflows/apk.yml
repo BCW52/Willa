@@ -27,9 +27,10 @@ jobs:
     - name: Build and Sign APK
       run: |
         sudo chmod +x gradlew
-        sh gradlew clean
-        sudo sh gradlew assembleRelease
+        ./gradlew clean
+        sudo ./gradlew assembleRelease
         ls -la app/build/outputs/apk/release/
+
     - name: Upload the signed APK artifact
       uses: actions/upload-artifact@v2
       with:
