@@ -114,7 +114,8 @@ public class MainActivity extends AppCompatActivity implements NavItemClickListe
         ArrayList<Server> servers = new ArrayList<>();
 
         servers.add(new Server("France",
-                com.kaizenvpn.vpn.Utils.getImgURL(R.drawable.usa_flag),
+                
+                
                 "tcp.ovpn"
         ));
         return servers;

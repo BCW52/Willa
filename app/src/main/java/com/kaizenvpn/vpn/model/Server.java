@@ -33,13 +33,7 @@ public class Server {
         this.country = country;
     }
 
-    public String getFlagUrl() {
-        return flagUrl;
-    }
-
-    public void setFlagUrl(String flagUrl) {
-        this.flagUrl = flagUrl;
-    }
+    
 
     public String getOvpn() {
         return ovpn;
