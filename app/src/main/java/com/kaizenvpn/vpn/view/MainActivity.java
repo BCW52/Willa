@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity implements NavItemClickListe
     private DrawerLayout drawer;
     private ChangeServer changeServer;
 
-    public static final String TAG = "";
+    public static final String TAG = "KaizenVPN";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity implements NavItemClickListe
         // Initialize all variable
         initializeAll();
 
-        
+        ImageButton menuRight = findViewById(R.id.navbar_right);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -60,7 +60,13 @@ public class MainActivity extends AppCompatActivity implements NavItemClickListe
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
 
-        
+        menuRight.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                closeDrawer();
+            }
+        });
+
         transaction.add(R.id.container, fragment);
         transaction.commit();
 
@@ -107,7 +113,8 @@ public class MainActivity extends AppCompatActivity implements NavItemClickListe
 
         ArrayList<Server> servers = new ArrayList<>();
 
-        servers.add(new Server(
+        servers.add(new Server("France",
+                com.kaizenvpn.vpn.Utils.getImgURL(R.drawable.usa_flag),
                 "tcp.ovpn"
         ));
         return servers;
@@ -145,7 +152,7 @@ public class MainActivity extends AppCompatActivity implements NavItemClickListe
 
                 Intent sharingIntent = new Intent(Intent.ACTION_SEND);
                 sharingIntent.setType("text/plain");
-                sharingIntent.putExtra(Intent.EXTRA_TEXT, "Share" + getString(R.string.app_name) + "Save Your Day : https://kaizenvpn.com");
+                sharingIntent.putExtra(Intent.EXTRA_TEXT, "KaizenVPN" + getString(R.string.app_name) + "* Save Your Day : https://kaizenvpn.com");
                 sharingIntent.putExtra(Intent.EXTRA_SUBJECT, "Subject");
                 startActivity(Intent.createChooser(sharingIntent, "Share using"));
 

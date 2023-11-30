@@ -5,12 +5,7 @@
     <item android:title="Share"
         android:id="@+id/share"
         />
-    <item android:title="Facebook"
-        android:id="@+id/facebook"
-        />
-      <item android:title="YouTube"
-        android:id="@+id/youtube"
-        />
+
     <item android:title="About"
         android:id="@+id/about"
         />

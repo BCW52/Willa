@@ -126,7 +126,7 @@ public class MainFragment extends Fragment implements View.OnClickListener, Chan
         server = preference.getServer();
 
         // Update current selected server icon
-      
+        updateCurrentServerIcon(server.getFlagUrl());
 
         connection = new CheckInternetConnection();
         LocalBroadcastManager.getInstance(getActivity()).registerReceiver(broadcastReceiver, new IntentFilter("connectionState"));
@@ -279,9 +279,9 @@ public class MainFragment extends Fragment implements View.OnClickListener, Chan
                 if (line == null) break;
                 config += line + "\n";
             }
-String country = "France";
+
             br.readLine();
-OpenVpnApi.startVpn(getContext(), config, country, server.getOvpnUserName(), server.getOvpnUserPassword());
+            OpenVpnApi.startVpn(getContext(), config, server.getCountry(), server.getOvpnUserName(), server.getOvpnUserPassword());
 
             // Update log
             binding.logTv.setText("Connecting...");
@@ -466,7 +466,7 @@ OpenVpnApi.startVpn(getContext(), config, country, server.getOvpnUserName(), ser
     @Override
     public void newServer(Server server) {
         this.server = server;
-    
+        updateCurrentServerIcon(server.getFlagUrl());
 
         // Stop previous connection
         if (vpnStart) {
