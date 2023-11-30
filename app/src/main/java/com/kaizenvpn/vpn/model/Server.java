@@ -1,8 +1,6 @@
 package com.kaizenvpn.vpn.model;
 
 public class Server {
-    private String country;
-    private String flagUrl;
     private String ovpn;
     private String ovpnUserName;
     private String ovpnUserPassword;
@@ -11,13 +9,12 @@ public class Server {
     public Server() {
     }
 
-    public Server(String country, String flagUrl, String ovpn) {
-        this.country = country;
-        this.flagUrl = flagUrl;
+    public Server(String ovpn) {
+        
         this.ovpn = ovpn;
     }
 
-    public Server(String country, String flagUrl, String ovpn, String ovpnUserName, String ovpnUserPassword) {
+    public Server(String ovpn, String ovpnUserName, String ovpnUserPassword) {
         this.ovpn = ovpn;
         this.ovpnUserName = ovpnUserName;
         this.ovpnUserPassword = ovpnUserPassword;
