@@ -42,16 +42,16 @@ echo 'export PATH="$PATH:`pwd`/flutter/bin"' >> ~/.bashrc
 
 # Install Android Studio
 # execute_command "sudo add-apt-repository -y ppa:maarten-fonville/android-studio" "log.txt"
-# execute_command "sudo apt update" "log.txt"
-execute_command "sudo apt install -y sdkmanager android-sdk" "log.txt"
+# execute_command "sudo apt update && sudo apt upgrade" "log.txt"
+execute_command "sudo apt install -y sdkmanager"
 
 # Install Java Development Kit and unzip
-execute_command "sudo apt-get install -y openjdk-11-jdk unzip zip" "log.txt"
+execute_command "sudo apt-get install -y unzip zip" "log.txt"
 
 # Download and extract Android SDK
 cd ~
-execute_command "curl -o android-sdk.zip https://dl.google.com/android/repository/sdk-tools-linux-3859397.zip" "log.txt"
-execute_command "unzip android-sdk.zip -d android-sdk" "log.txt"
+execute_command "curl -o android-sdk.zip https://dl.google.com/android/repository/sdk-tools-linux-3859397.zip"
+execute_command "unzip android-sdk.zip -d android-sdk" 
 # echo 'export PATH=${PATH}:~/android-sdk/tools/bin:~/android-sdk/sdk/platform-tools:~/android-sdk/sdk/build-tools/' >> ~/.bashrc
 # echo "export PATH=${PATH}:~/android-sdk/sdk/platform-tools" >> ~/.bashrc
 # echo "export ANDROID_HOME=~/android-sdk/sdk/" >> ~/.bashrc
@@ -63,4 +63,3 @@ yes | sdkmanager --license
 print_color $GREEN "Setup completed successfully!"
 # source .bashrc
 # git clone https://github.com/bcw52/will
-

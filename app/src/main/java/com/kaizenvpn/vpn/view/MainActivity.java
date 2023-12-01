@@ -21,7 +21,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.kaizenvpn.vpn.R;
-import com.kaizenvpn.vpn.adapter.ServerListRVAdapter;
+
 import com.kaizenvpn.vpn.interfaces.ChangeServer;
 import com.kaizenvpn.vpn.interfaces.NavItemClickListener;
 import com.kaizenvpn.vpn.model.Server;
@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity implements NavItemClickListe
     private Fragment fragment;
     private RecyclerView serverListRv;
     private ArrayList<Server> serverLists;
-    private ServerListRVAdapter serverListRVAdapter;
+    
     private DrawerLayout drawer;
     private ChangeServer changeServer;
 
@@ -71,11 +71,7 @@ public class MainActivity extends AppCompatActivity implements NavItemClickListe
         transaction.commit();
 
         // Server List recycler view initialize
-        if (serverLists != null) {
-            serverListRVAdapter = new ServerListRVAdapter(serverLists, this);
-            serverListRv.setAdapter(serverListRVAdapter);
-        }
-
+        
     }
 
     /**
@@ -114,8 +110,7 @@ public class MainActivity extends AppCompatActivity implements NavItemClickListe
         ArrayList<Server> servers = new ArrayList<>();
 
         servers.add(new Server("France",
-                
-                
+                com.kaizenvpn.vpn.Utils.getImgURL(R.drawable.usa_flag),
                 "tcp.ovpn"
         ));
         return servers;
