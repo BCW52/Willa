@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity implements NavItemClickListe
     private DrawerLayout drawer;
     private ChangeServer changeServer;
 
-    public static final String TAG = "KaizenVPN";
+    
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,8 +47,6 @@ public class MainActivity extends AppCompatActivity implements NavItemClickListe
 
         // Initialize all variable
         initializeAll();
-
-        ImageButton menuRight = findViewById(R.id.navbar_right);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -60,13 +58,7 @@ public class MainActivity extends AppCompatActivity implements NavItemClickListe
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
 
-        menuRight.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                closeDrawer();
-            }
-        });
-
+        
         transaction.add(R.id.container, fragment);
         transaction.commit();
 
