@@ -90,7 +90,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="42dp"
-                android:text="@string/app_name" />
+                 />
 
             <TextView
                 android:id="@+id/byteOutTv"
@@ -98,7 +98,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical|end"
                 android:layout_marginRight="42dp"
-                android:text="@string/app_name" />
+                 />
 
             <ImageView
                 android:layout_width="30dp"

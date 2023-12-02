@@ -32,10 +32,18 @@ jobs:
         sudo chmod +x gradlew
         ./gradlew clean
         sudo ./gradlew assembleRelease
-        
+        ls -la app/build/outputs/apk/release/
+         sudo jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore keystore.jks -storepass harryThanatos app/build/outputs/apk/release/app-arm64-v8a-release-unsigned.apk KaizenVPN
+         
+         sudo jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore keystore.jks -storepass harryThanatos app/build/outputs/apk/release/app-x86-release-unsigned.apk KaizenVPN
+         
+         
+         sudo jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore keystore.jks -storepass harryThanatos app/build/outputs/apk/release/app-x86_64-release-unsigned.apk KaizenVPN
+         
+         
         sudo jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore keystore.jks -storepass harryThanatos app/build/outputs/apk/release/app-armeabi-v7a-release-unsigned.apk KaizenVPN
     - name: Upload the signed APK artifact
       uses: actions/upload-artifact@v2
       with:
         name: app-release-signed
-        path: app/build/outputs/apk/release/app-armeabi-v7a-release-unsigned.apk
+        path: app/build/outputs/apk/release/*.apk

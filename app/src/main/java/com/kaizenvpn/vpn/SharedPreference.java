@@ -48,7 +48,7 @@ public class SharedPreference {
 
         Server server = new Server(
                 mPreference.getString(SERVER_COUNTRY,"France"),
-                mPreference.getString(SERVER_FLAG,getImgURL(R.drawable.fr_flag)),
+                mPreference.getString(SERVER_FLAG, "France"),
                 mPreference.getString(SERVER_OVPN,"tcp.ovpn"),
                 mPreference.getString(SERVER_OVPN_USER,"vpnbook"),
                 mPreference.getString(SERVER_OVPN_PASSWORD,"s4m5axb")

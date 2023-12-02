@@ -8,6 +8,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.Toast;
+import android.net.Uri;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -38,7 +39,7 @@ public class MainActivity extends AppCompatActivity implements NavItemClickListe
     private DrawerLayout drawer;
     private ChangeServer changeServer;
 
-    public static final String TAG = "KaizenVPN";
+    
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,8 +48,6 @@ public class MainActivity extends AppCompatActivity implements NavItemClickListe
 
         // Initialize all variable
         initializeAll();
-
-        ImageButton menuRight = findViewById(R.id.navbar_right);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -60,13 +59,7 @@ public class MainActivity extends AppCompatActivity implements NavItemClickListe
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
 
-        menuRight.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                closeDrawer();
-            }
-        });
-
+        
         transaction.add(R.id.container, fragment);
         transaction.commit();
 
@@ -90,6 +83,18 @@ public class MainActivity extends AppCompatActivity implements NavItemClickListe
         changeServer = (ChangeServer) fragment;
 
     }
+ private void openYouTubeChannel() {
+    String youtubeChannelUrl = "https://www.youtube.com/@kaizenvpn";
+    Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(youtubeChannelUrl));
+    startActivity(browserIntent);
+}
+
+private void openFacebokPage() {
+    String facebookPageUrl = "https://www.facebook.com/kaizenvpncom?notif_id=1701255007781978&notif_t=profile_plus_admin_invite&ref=notif";
+    Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(facebookPageUrl));
+    startActivity(browserIntent);
+}
+
 
     /**
      * Close navigation drawer
@@ -110,7 +115,7 @@ public class MainActivity extends AppCompatActivity implements NavItemClickListe
         ArrayList<Server> servers = new ArrayList<>();
 
         servers.add(new Server("France",
-                com.kaizenvpn.vpn.Utils.getImgURL(R.drawable.usa_flag),
+                com.kaizenvpn.vpn.Utils.getImgURL(R.drawable.fr_flag),
                 "tcp.ovpn"
         ));
         return servers;
@@ -159,6 +164,14 @@ public class MainActivity extends AppCompatActivity implements NavItemClickListe
                 Toast.makeText(this, "Created by DevRahman", Toast.LENGTH_SHORT).show();
 
                 break;
+            case R.id.youtubeChannel:
+            openYouTubeChannel();
+            break;
+            
+            case R.id.openFacebokPage:
+            openFacebokPage();
+            break;
+
 
 
         }
