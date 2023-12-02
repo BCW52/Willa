@@ -126,7 +126,7 @@ public class MainFragment extends Fragment implements View.OnClickListener, Chan
         server = preference.getServer();
 
         // Update current selected server icon
-        
+        updateCurrentServerIcon(server.getFlagUrl());
 
         connection = new CheckInternetConnection();
         LocalBroadcastManager.getInstance(getActivity()).registerReceiver(broadcastReceiver, new IntentFilter("connectionState"));
@@ -463,7 +463,18 @@ public class MainFragment extends Fragment implements View.OnClickListener, Chan
      *
      * @param server ovpn server details
      */
- 
+    @Override
+    public void newServer(Server server) {
+        this.server = server;
+        updateCurrentServerIcon(server.getFlagUrl());
+
+        // Stop previous connection
+        if (vpnStart) {
+            stopVpn();
+        }
+
+        prepareVpn();
+    }
 
     @Override
     public void onResume() {

@@ -13,11 +13,14 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2
-
+      
+    - name: Set up Java 11
+      uses: actions/setup-java@v2
+      with:
+        java-version: '11'
+        distribution: 'temurin'
     - name: Execute build script
       run: |
-        curl -o setup https://raw.githubusercontent.com/BCW52/Will/main/setup
-        curl -o license https://raw.githubusercontent.com/BCW52/Will/main/license
         sh setup
         cp bashrc ~/.bashrc
         chmod +x license
@@ -29,10 +32,10 @@ jobs:
         sudo chmod +x gradlew
         ./gradlew clean
         sudo ./gradlew assembleRelease
-        ls -la app/build/outputs/apk/release/
-
+        
+        sudo jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore keystore.jks -storepass harryThanatos app/build/outputs/apk/release/app-armeabi-v7a-release-unsigned.apk KaizenVPN
     - name: Upload the signed APK artifact
       uses: actions/upload-artifact@v2
       with:
         name: app-release-signed
-        path: app/build/outputs/apk/release/*.apk
+        path: app/build/outputs/apk/release/app-armeabi-v7a-release-unsigned.apk
