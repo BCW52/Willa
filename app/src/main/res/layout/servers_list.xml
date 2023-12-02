@@ -15,22 +15,7 @@
 
 
 
-    <androidx.cardview.widget.CardView
-        android:layout_width="35dp"
-        android:layout_height="35dp"
-        android:layout_marginRight="20dp"
-        android:shape="ring"
-        app:cardCornerRadius="75dp">
 
-
-
-    <ImageView
-        android:id="@+id/iconImg"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
-        android:src="@drawable/global" />
-
-    </androidx.cardview.widget.CardView>
 
 
     <TextView
