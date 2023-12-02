@@ -8,30 +8,7 @@
     app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
     android:background="@color/colorPrimary">
 
-    <TextView
-        android:id="@+id/titleTv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:fontFamily="sans-serif-smallcaps"
-        android:text="@string/app_name"
-        android:textColor="@color/white"
-        android:textSize="20sp"
-        android:textStyle="bold" />
 
-    <androidx.cardview.widget.CardView
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginLeft="10dp"
-        android:shape="ring"
-        app:cardCornerRadius="75dp">
-
-        <ImageButton
-            android:id="@+id/navbar_right"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:background="@drawable/global" />
-
-    </androidx.cardview.widget.CardView>
+    
 
 </androidx.appcompat.widget.Toolbar>
