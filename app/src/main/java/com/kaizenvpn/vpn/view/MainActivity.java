@@ -89,9 +89,15 @@ public class MainActivity extends AppCompatActivity implements NavItemClickListe
     startActivity(browserIntent);
 }
 
-private void openFacebokPage() {
+private void openFacebookPage() {
     String facebookPageUrl = "https://www.facebook.com/kaizenvpncom?notif_id=1701255007781978&notif_t=profile_plus_admin_invite&ref=notif";
     Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(facebookPageUrl));
+    startActivity(browserIntent);
+}
+
+private void privPolicy() {
+    String privPolicyUrl = "https://www.kaizenvpn.com/privacy-policy";
+    Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(privPolicyUrl));
     startActivity(browserIntent);
 }
 
@@ -161,18 +167,20 @@ private void openFacebokPage() {
 
             case R.id.about:
 
-                Toast.makeText(this, "Created by DevRahman", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Created by KaizenVPN", Toast.LENGTH_SHORT).show();
 
                 break;
             case R.id.youtubeChannel:
             openYouTubeChannel();
             break;
             
-            case R.id.openFacebokPage:
-            openFacebokPage();
+            case R.id.openFacebookPage:
+            openFacebookPage();
             break;
 
-
+            case R.id.privPolicy:
+            privPolicy();
+            break;
 
         }
 
