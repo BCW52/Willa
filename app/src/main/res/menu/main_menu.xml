@@ -17,9 +17,13 @@
     />
         
     <item
-        android:id="@+id/openFacebokPage"
+        android:id="@+id/openFacebookPage"
         android:title="Visit Our Facebook Page"
         app:showAsAction="never"
     />
-
+    <item
+        android:id="@+id/privPolicy"
+        android:title="Privacy Policy"
+        app:showAsAction="never"
+    />
 </menu>
